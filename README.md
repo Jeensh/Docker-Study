@@ -1,2 +1,2 @@
 # Docker-Study
-도커와 CI 환경 공부 저장소
+강의 세션8 - react-app 테스트&배포 과정을 위한 브랜치
