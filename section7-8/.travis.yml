@@ -1,0 +1,14 @@
+sudo: required
+language: generic
+branches:
+  only:
+    - section8
+services:
+  - docker
+before_install:
+  - echo "start creating an image with dockerfile"
+  - docker build -t jeensh/docker-react-app -f dockerfile.dev .
+script:
+  - docker run -e CI=true jeensh/docker-react-app npm run test -- --coverage
+after_success:
+  - echo "Test success"
