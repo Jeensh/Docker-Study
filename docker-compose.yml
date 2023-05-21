@@ -1,20 +1,12 @@
-version: '3'
+version: "3"
 services:
   react-app:
-    build:
+    build: 
       context: ./
-      dockerfile: dockerfile.dev
-    ports: 
-      - "8080:3000"
+      dockerfile: Dockerfile
+    ports:
+     - '80:80'
     volumes:
-      - /usr/src/app/node_modules
-      - ./:/usr/src/app
+     - /usr/src/app/node_modules
+     - ./:/usr/src/app
     stdin_open: true
-  tests:
-    build:
-      context: ./
-      dockerfile: dockerfile.dev
-    volumes:
-      - /usr/src/app/node_modules
-      - ./:/usr/src/app
-    command: ["npm", "run", "test"]
