@@ -1,29 +1,23 @@
 sudo: required
-
 language: generic
-
 branches:
   only:
     - section8
-
 services:
   - docker
-
 before_install:
   - echo "start creating an image with dockerfile"
-  - docker build -t jeensh/docker-react-app -f Dockerfile.dev .
-
-script: 
+  - docker build -t jeensh/docker-react-app -f dockerfile.dev .
+script:
   - docker run -e CI=true jeensh/docker-react-app npm run test -- --coverage
-
 deploy:
-  edge: true
+  # edge: true
   provider: elasticbeanstalk
-  region: ap-northeast-2
-  app: react-app
-  env: React-app-env
-  bucket_name: elasticbeanstalk-ap-northeast-2-751154654103
-  bucket_path: react-app
+  region: "ap-northeast-2"
+  app: "docker-react-app"
+  env: "Docker-react-app-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-2-751154654103"
+  bucket_path: "doker-react-app"
   on:
     branch: section8
   access_key_id: $AWS_ACCESS_KEY
